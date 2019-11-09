@@ -1,0 +1,375 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+
+<style type="text/css">
+ input{
+   display: none;
+ }
+ .bl_3daysSearchBlock{
+   margin-bottom: 60px;
+ }
+ .bl_3daysSearchBlock_inner{
+   width: 82.9%;
+   max-width: 1160px;
+   margin-left: auto;
+   margin-right: auto;
+ }
+ .bl_3daysSearchBlock_ttl{
+   text-align: center;
+   margin: 55px 0;
+ }
+ .bl_3daysSearchBlock_ttl_main{
+   font-size: 27px;
+   color: #0073aa;
+   margin-bottom: 15px;
+   font-weight: bold;
+   letter-spacing: 0.15em;
+   font-family: "Josefin Sans" , "NotoSansCJKjp-Jxck", "Noto Sans CJK JP" , "Noto Sans" , "Noto Sans Japanese" ,"Helvetica Neue", "Meiryo" , "メイリオ", "YuGothic", "游ゴシック",sans-serif;
+ }
+ .bl_3daysSearchBlock_ttl_sub{
+   font-size: 16px;
+   color: #0073aa;
+   letter-spacing: 0.2em;
+ }
+ .el_searchResult{
+   text-align: center;
+   color: #0073aa;
+ }
+ .js_target{
+   display: none;
+ }
+ .js_target.js_selected{
+   display: block;
+ }
+ .bl_selectBlock label{
+   display: inline;
+ }
+ .bl_selectBlock input{
+ }
+ .bl_selectBlock_check label .el_checkbox{
+   position: relative;
+   top: 3px;
+   width: 14px;
+   height: 14px;
+   display: inline-block;
+   margin-right: 5px;
+   border: 1px solid #0073aa;
+ }
+ .bl_selectBlock_check label .el_checkbox:after{
+   content: "";
+   position: absolute;
+   top: 4px;
+   left: 4px;
+   bottom: 4px;
+   right: 4px;
+ }
+ .bl_selectBlock_check input[type=checkbox]:checked + label .el_checkbox:after{
+   background-color: #0073aa;
+ }
+ .el_searchResult{
+   margin-bottom: 20px;
+ }
+ .bl_selectBlock{
+   border: 1px solid #0073aa;
+   padding: 30px;
+   box-sizing: border-box;
+   margin-bottom: 30px;
+   font-size: 14px;
+   letter-spacing: 0.1em;
+ }
+ .bl_selectBlock_wrapper_wrapper{
+   display: -webkit-flex;
+   display: -moz-flex;
+   display: -ms-flex;
+   display: -o-flex;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   margin-bottom: 30px;
+ }
+ .bl_selectBlock_check label{
+   cursor: pointer;
+ }
+ .bl_selectBlock_ttl{
+   width: 185px;
+   color: #0073aa;
+   letter-spacing: 0.1em;
+   margin-bottom: 20px;
+ }
+ @media screen and (max-width: 765px){
+   .bl_selectBlock_ttl{
+     width: 100%;
+     margin-bottom: 20px;
+   }
+ }
+ .bl_selectBlock_content{
+   width: calc(100% - 185px);
+ }
+ @media screen and (max-width: 765px){
+   .bl_selectBlock_content{
+     width: 100%;
+   }
+ }
+ .bl_searchResultBlock{
+   font-size: 14px;
+   border-top: 1px solid #bdbdbd;
+ }
+ .bl_searchResultBlock_item{
+   padding: 20px 0;
+   box-sizing: border-box;
+   border-bottom: 1px solid #bdbdbd;
+ }
+ .bl_selectBlock_check{
+   display: inline-block;
+   margin-right: 25px;
+   display: inline-block;
+   margin-bottom: 20px;
+ }
+ .bl_selectBlock_check:last-child{
+   margin-right: 0;
+ }
+ .bl_selectBlock_release{
+   text-align: center;
+   color: #fff;
+   background-color: #bdbdbd;
+   padding: 15px 0;
+ }
+ .js_release{
+   cursor: pointer;
+ }
+</style>
+
+<div class="bl_3daysSearchBlock">
+
+  <div class="bl_3daysSearchBlock_inner">
+
+    <div class="bl_3daysSearchBlock_ttl">
+      <div class="bl_3daysSearchBlock_ttl_main">絞り込み検索</div>
+      <div class="bl_3daysSearchBlock_ttl_sub">PATCHEE SEARCHER</div>
+
+    </div>
+
+    <div id="select" class="bl_selectBlock">
+
+      <div class="el_searchResult">
+        <span class="el_searchResult_nume js_numerator"></span>／<span class="el_searchResult_deno js_denominator"></span>
+      </div>
+
+      <div class="bl_selectBlock_wrapper">
+        <div class="bl_selectBlock_wrapper_wrapper">
+          <div class="bl_selectBlock_ttl">language</div>
+          <div class="bl_selectBlock_content js_conditions" data-type="type">
+            <span class="bl_selectBlock_check"><input id="type-korean" type="checkbox" name="type" value="korean">
+              <label for="type-korean">
+              <span class="el_checkbox"></span>
+              korean
+              </label>
+            </span>
+            <span class="bl_selectBlock_check"><input id="type-english" type="checkbox" name="type" value="english">
+              <label for="type-english">
+              <span class="el_checkbox"></span>
+              english
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="bl_selectBlock_wrapper">
+          <div class="bl_selectBlock_wrapper_wrapper">
+            <div class="bl_selectBlock_ttl">sex</div>
+            <div class="bl_selectBlock_content js_conditions" data-type="sex">
+              <span class="bl_selectBlock_check"><input id="sex-female" type="checkbox" name="sex" value="female">
+                <label for="sex-female">
+                <span class="el_checkbox"></span>
+                female
+                </label>
+              </span>
+              <span class="bl_selectBlock_check"><input id="sex-male" type="checkbox" name="sex" value="male">
+                <label for="sex-male">
+                <span class="el_checkbox"></span>
+                male
+                </label>
+              </span>
+            </div>
+          </div>
+
+        <div class="bl_selectBlock_wrapper_wrapper">
+          <div class="bl_selectBlock_ttl">JPY/h</div>
+          <div class="bl_selectBlock_content js_conditions" data-type="price">
+            <span class="bl_selectBlock_check"><input id="price-1000yen/h" type="checkbox" name="price" value="1000yen/h">
+              <label for="price-1000yen/h">
+                <span class="el_checkbox"></span>
+                1000 yen/h
+              </label>
+            </span>
+            <span class="bl_selectBlock_check"><input id="price-1500yen/h" type="checkbox" name="price" value="1500yen/h">
+              <label for="price-1500yen/h">
+                <span class="el_checkbox"></span>
+                1500 yen/h
+              </label>
+            </span>
+            <span class="bl_selectBlock_check"><input id="price-2000yen/h" type="checkbox" name="price" value="2000yen/h">
+              <label for="price-2000yen/h">
+                <span class="el_checkbox"></span>
+                2000 yen/h
+              </label>
+            </span>
+
+            <span class="bl_selectBlock_check"><input id="price-2500yen/h" type="checkbox" name="price" value="2500yen/h">
+              <label for="price-2500yen/h">
+                <span class="el_checkbox"></span>
+                2500 yen/h
+              </label>
+            </span>
+            <span class="bl_selectBlock_check"><input id="price-3000yen/h" type="checkbox" name="price" value="3000yen/h">
+              <label for="price-3000yen/h">
+                <span class="el_checkbox"></span>
+                3000 yen/h
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="bl_selectBlock_wrapper_wrapper">
+          <div class="bl_selectBlock_ttl">occupation</div>
+          <div class="bl_selectBlock_content js_conditions" data-type="occupation">
+            <span class="bl_selectBlock_check"><input id="occupation-teacher" type="checkbox" name="occupation" value="teacher">
+              <label for="occupation-teacher">
+                <span class="el_checkbox"></span>
+                teacher
+              </label>
+            </span>
+            <span class="bl_selectBlock_check"><input id="occupation-guide" type="checkbox" name="occupation" value="guide">
+              <label for="occupation-guide">
+                <span class="el_checkbox"></span>
+                guide
+              </label>
+            </span>
+            <span class="bl_selectBlock_check"><input id="occupation-translator" type="checkbox" name="occupation" value="translator">
+              <label for="occupation-translator">
+                <span class="el_checkbox"></span>
+                translator
+              </label>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="bl_selectBlock_release js_release">CLEAR ALL</div>
+    </div>
+
+    <div class="bl_searchResultBlock">
+      <div class="bl_searchResultBlock_item js_target" data-sex="male" data-type="korean" data-price="1000yen/h" data-occupation="teacher">Alex/korean/male/1000yen/h/teacher/<a href="{% url 'Apro' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="male" data-type="english" data-price="1000yen/h" data-occupation="teacher">Bob/english/male/1000yen/h/teacher/<a href="{% url 'Bpro' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="female" data-type="english" data-price="1000yen/h" data-occupation="teacher">Cathy/english/female/1000yen/h/teacher/<a href="{% url 'Cpro' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="female" data-type="korean" data-price="1500yen/h" data-occupation="teacher">D/korean/female/1500yen/h/teacher/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="male" data-type="english" data-price="1500yen/h" data-occupation="teacher">E/english/male/1500yen/h/teacher/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="female" data-type="english" data-price="1500yen/h" data-occupation="teacher">F/english/female/1500yen/h/teacher/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="female" data-type="korean" data-price="1000yen/h" data-occupation="guide" >G/korean/female/1000yen/h/guide/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="female" data-type="english" data-price="1000yen/h" data-occupation="translator">H/english/female/1000yen/h/translator/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="male" data-type="english" data-price="1000yen/h" data-occupation="translator">I/english/male/1000yen/h/translator/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="male" data-type="korean" data-price="2000yen/h" data-occupation="teacher">J/korean/male/2000yen/h/teacher/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="male" data-type="english" data-price="2500yen/h" data-occupation="translator">K/english/male/2500yen/h/translator/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+      <div class="bl_searchResultBlock_item js_target" data-sex="male" data-type="korean" data-price="3000yen/h" data-occupation="teacher">L/korean/male/3000yen/h/teacher/<a href="{% url 'reserved' %}">RESERVE this PERSON</a></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    var box = $('.js_target');//検索対象のDOMを格納する
+    var conditions = $('.js_conditions');//現在の条件の選択状況を保持するオブジェクト
+    var findConditions;//各data-typeの子要素(input)を格納する
+    var currentType;//現在のdata-typeを示す
+    var count = 0;//検索ヒット数
+    var checkcount = 0;//各data-typeのチェックボックス選択数
+    var data_check = 0;//対象項目のデータがどれだけチェック状態と一致しているか
+
+    var condition ={};//チェックボックスの入力状態を保持するオブジェクト
+
+    $('.js_denominator').text(box.length);//件数表示の分母をセット
+
+    for(var i = 0; i < conditions.length; i++){//ターゲットのdata-typeを参照し、メソッドとしてconditionに個別に代入する
+      currentType = conditions[i].getAttribute('data-type');
+      condition[currentType] = [];
+    }
+
+    function setConditions(){//条件設定
+
+      count = 0;
+      box.removeClass('js_selected');
+
+      for(var i = 0; i < conditions.length; i++){//data-typeごとの処理
+
+        currentType = conditions[i].getAttribute('data-type');
+
+        findConditions = conditions[i].querySelectorAll('input');
+
+        for(var n = 0; n< findConditions.length; n++){//inputごとの処理
+
+          if(findConditions[n].checked){//現在選択中のインプットが選択されている場合
+            condition[currentType][findConditions[n].value] = true;
+            checkcount++
+          } else {
+            condition[currentType][findConditions[n].value] = false;
+          }
+          if(findConditions.length === n+1){//ループが最後の場合
+            if(checkcount === 0){
+              for(var t = 0; t < findConditions.length; t++){
+                condition[currentType][findConditions[t].value] = true;
+              }
+            }
+            checkcount = 0;
+          }
+        }
+      }
+
+
+      for(var m = 0, len = box.length; m< len; ++m){//最初に取得したターゲットの情報と、現在のinputの選択状態を比較して処理を行う
+
+        for(var i = 0; i < conditions.length; i++){//ターゲットのdata-typeを参照し、メソッドとしてconditionに個別に代入する
+          currentType = conditions[i].getAttribute('data-type');
+
+          if(condition[currentType][$(box[m]).data(currentType)]){
+            data_check++;
+          } else {
+
+          }
+        }
+
+          if(data_check === conditions.length){
+            count++;
+            $(box[m]).addClass('js_selected');
+          }else{
+
+          }
+          data_check = 0;
+
+      }
+
+
+      $('.js_numerator').text(count);//件数表示の分子をセット
+    }
+
+    setConditions();
+
+    $(document).on('click','input',function(){
+
+      setConditions();
+
+    });
+
+    $(document).on('click','.js_release',function(){
+
+      $('.bl_selectBlock_check input').attr("checked", false);
+
+      setConditions();
+
+    });
+
+
+
+
+  });
+  </script>

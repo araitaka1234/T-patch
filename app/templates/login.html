@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <body>
+    {% if form.errors  %}
+    <p>ユーザーID, パスワードが一致しません．</p>
+    {% endif %}
+    <form method="POST" action="{% url 'login' %}">
+    <font size=7><center><br>
+      T-patch<br></font>
+      <font size=6>
+      {% csrf_token %}
+      <label>ユーザーID</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+      <label>パスワード</label>
+      {{ form.password }}
+      {{ form.password.errors }}
+    </font>
+        <!-- <button type = "submit" >ログイン</button> -->
+        <font size=4><input type="submit" value="ログイン" ></font></center>
+        <!-- onClick="location.href='{% url 'index' %}'" -->
+       <!-- </a> -->
+    </form>
+
+  </body>
+</html>

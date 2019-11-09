@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>詳細登録</title>
+</head>
+<body>
+
+<!-- <form action="mailto:abc@gmail.com" method="post" enctype="text/plain"> -->
+<form  action="{% url 'signup'%}" method="post">
+  {% csrf_token %}
+<table>
+  <tr>
+    <td colspan="2">
+      <strong>Details</strong>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>USER ID：</strong>
+    </td>
+    <td>
+      {{USER_ID}}
+      <!-- {{ user.username }} -->
+    </td>
+    <td>
+      <strong>NAME：</strong>
+    </td>
+    <td>
+    <input type="number" name="your_name" maxlength="35">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>MAIL ADDRESS：</strong>
+    </td>
+    <td>
+    <input type="text" name="mailadrress" maxlength="55">
+    </td>
+    <td>
+      <strong>SEX：</strong>
+    </td>
+    <td>
+    <input type="radio" name="SEX" value="male">MALE
+    <input type="radio" name="SEX" value="female">FEMALE
+    </td>
+  </tr>
+  <tr>
+    <td >
+      <strong>PHONE NUMBER：</strong>
+    </td>
+    <td>
+    <input type="number" name="phonenumber" maxlength="13">
+    </td>
+    <td >
+      <strong>Hourly Wage(JPY)：</strong>
+    </td>
+    <td>
+    <select name="hourlywage">
+      <option selected>1000 yen/hour</option>
+      <option>1500 yen/hour</option>
+      <option>2000 yen/hour</option>
+      <option>2500 yen/hour</option>
+      <option>3000 yen/hour</option>
+    </select>
+  </td>
+  </tr>
+  <tr>
+    <td >
+      <strong>PREFECTURE：</strong>
+    </td>
+    <td>
+      <select name="prefecture">
+        <option selected>Fukuoka</option>
+        <option>Nagasaki</option>
+        <option>Saga</option>
+        <option>Kumamoto</option>
+        <option>Others</option>
+      </select>
+    </td>
+    <td >
+      <strong>LANGUAGE AVARABLE：</strong>
+    </td>
+    <td>
+    <input type="checkbox" name="language" value="j">Japanese
+    <br>
+    <input type="checkbox" name="language" value="e">English
+    <br>
+    <input type="checkbox" name="language" value="k">Korean
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <br><strong>licences(write your qualifications or score of your language skill)：</strong>
+    <br>
+      <textarea name="rema" rows="5" cols="75"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      <strong>REMARKS：</strong>
+    <br>
+      <textarea name="remarks" rows="5" cols="75"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+  
+      <button type="submit" name="reload"style="width:100px;height:70px" >
+          <font size ="6">更新する</font>
+     </button>
+    <!-- <input type="submit" value="更新する" name="reload" > -->
+    </td>
+    <a href="{% url 'driversINFOforDRIVER' %}">プロフィールの表示</a>
+    <td colspan="2">
+    <input type="reset" value="やり直し"　name="reset">
+    </td>
+  </tr>
+</table>
+</form>
+こんにちは
+<!-- {% if your_name %}
+    {{your_name}},こんにちは。
+{% endif %} -->
+</body>
+</html>
