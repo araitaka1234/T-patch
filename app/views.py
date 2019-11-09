@@ -15,7 +15,7 @@ from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.http import HttpResponse
-from .predict import __predictor__
+# from .predict import __predictor__
 
 import numpy as np
 from .filters import ItemFilter
